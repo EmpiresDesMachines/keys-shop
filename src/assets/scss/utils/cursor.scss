@@ -1,0 +1,7 @@
+label, button, input, select {
+  cursor: pointer;
+}
+
+[disabled] {
+  cursor: default;
+}

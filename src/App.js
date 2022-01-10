@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import { Shop } from './components/Shop';
+import { Warning } from './components/Warning';
 
 function App() {
+  const [isWarning, setWarning] = React.useState(true);
+
+  const removeWarning = () => {
+    localStorage.setItem('warning', true);
+    setWarning(false);
+  };
+
+  React.useEffect(() => {
+    if (localStorage.getItem('warning')) {
+      setWarning(false);
+    }
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {isWarning ? (
+        <Warning removeWarning={removeWarning} isWarning={isWarning} />
+      ) : (
+        <>
+          <Header />
+          <Shop />
+          <Footer />
+        </>
+      )}
+    </>
   );
 }
 
