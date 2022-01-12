@@ -1,6 +1,9 @@
 import React from 'react';
 
-function CartItem({ id, name, price, quantity, img, removeFromCart, changeQuantity }) {
+import { ShopContext } from '../context';
+
+function CartItem({ id, name, price, quantity, img }) {
+  const { removeFromCart, changeQuantity } = React.useContext(ShopContext);
   return (
     <div className="cart-item">
       <img className="cart-item__img" src={img} width={160} height={74} alt={name} />

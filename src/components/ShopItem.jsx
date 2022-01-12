@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-function ShopItem({ id, name, price, img, description: des, addToCart }) {
+import { ShopContext } from '../context';
+
+function ShopItem({ id, name, price, img, description: des }) {
+  const { addToCart } = useContext(ShopContext);
   return (
     <div className="shop-item shop__item">
       <h3 className="shop-item__title">{name}</h3>

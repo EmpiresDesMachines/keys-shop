@@ -4,6 +4,8 @@ import { Footer } from './components/Footer';
 import { Shop } from './components/Shop';
 import { Warning } from './components/Warning';
 
+import { ContextProvider } from './context';
+
 function App() {
   const [isWarning, setWarning] = React.useState(true);
 
@@ -25,7 +27,9 @@ function App() {
       ) : (
         <>
           <Header />
-          <Shop />
+          <ContextProvider>
+            <Shop />
+          </ContextProvider>
           <Footer />
         </>
       )}
